@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Father's Day Celebration from Archit</title>
+<style>
+  /* Reset and basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: black;
+    color: #fff;
+  }
+
+  /* Background image with overlay */
+  body {
+    position: relative;
+    background-image: url('https://placehold.co/1920x1080/000000/ffffff?text=Silhouette+of+father+and+son+in+black+monochrome+style');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 0;
+  }
+
+  /* Container */
+  #container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Main message styling - large with glow for "Happy Father's Day" text */
+  h1 {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffdf6f;
+    text-shadow:
+      0 0 20px #ffdf6f,
+      0 0 40px #ffb347,
+      0 0 60px #ffb347,
+      0 0 80px #ffae42;
+    margin-bottom: 1rem;
+    animation: flickerGlow 3s infinite alternate ease-in-out;
+    user-select: none;
+  }
+
+  /* Message from Archit */
+  p.message {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #e2db98;
+    max-width: 720px;
+    margin-bottom: 3rem;
+    letter-spacing: 0.06em;
+    text-shadow: 0 0 6px #e2db98;
+    user-select: none;
+  }
+
+  /* Animated floating hearts */
+  .floating-heart {
+    position: fixed;
+    bottom: -50px;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, #ff6b6b, #cc4c4c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px #ff6b6b77;
+    animation-timing-function: ease-in-out;
+    animation-name: floatUp;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+  }
+  .floating-heart::before, .floating-heart::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, #ff6b6b, #cc4c4c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+  .floating-heart::before {
+    top: -14px;
+    left: 0;
+  }
+  .floating-heart::after {
+    left: 14px;
+    top: 0;
+  }
+
+  /* Animation for hearts floating upwards with sway */
+  @keyframes floatUp {
+    0% {
+      bottom: -50px;
+      opacity: 0;
+      transform: translateX(0) rotate(45deg) scale(0.8);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      bottom: 110vh;
+      opacity: 0;
+      transform: translateX(40px) rotate(45deg) scale(1.2);
+    }
+  }
+
+  /* Flickering glow effect for title */
+  @keyframes flickerGlow {
+    0%, 100% { text-shadow:
+      0 0 20px #ffdf6f,
+      0 0 40px #ffb347,
+      0 0 60px #ffb347,
+      0 0 80px #ffae42; color: #ffdf6f; }
+    50% { 
+      text-shadow:
+      0 0 30px #ffe87c,
+      0 0 60px #ffcc33,
+      0 0 90px #ffcc33,
+      0 0 120px #ffb12e; 
+      color: #fff9aa;
+     }
+  }
+
+  /* Responsive text scaling */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3.6rem;
+    }
+    p.message {
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+  }
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2.6rem;
+    }
+  }
+
+  /* Audio control styling */
+  #audioControl {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    color: #ffdf6f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+  #audioControl:hover {
+    background: rgba(0,0,0,0.9);
+  }
+
+  /* Material Icon style */
+  .material-icons {
+    font-size: 28px;
+    user-select: none;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+
+<div id="container" role="main" aria-label="Father's Day celebration site from Archit">
+  <h1>Happy Father's Day!</h1>
+  <p class="message">With love and gratitude from Archit.</p>
+</div>
+
+<!-- Floating hearts container -->
+<div id="hearts-container" aria-hidden="true"></div>
+
+<!-- Confetti container -->
+<div id="confetti-container" aria-hidden="true"></div>
+
+<!-- Audio and control -->
+<audio id="fathersDaySong" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f56d7a0ca.mp3?filename=celebration-1-6076.mp3"></audio>
+<button id="audioControl" aria-pressed="false" aria-label="Play or pause Father's Day music">
+  <span class="material-icons" id="audioIcon">play_arrow</span>
+</button>
+
+<script>
+  // Generate multiple floating hearts with random horizontal position and animation duration
+  const heartsContainer = document.getElementById('hearts-container');
+  const numHearts = 16;
+
+  function createHeart(delay, leftPercent, duration) {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.style.left = leftPercent + 'vw';
+    heart.style.animationDuration = duration + 's';
+    heart.style.animationDelay = delay + 's';
+    heartsContainer.appendChild(heart);
+  }
+  for (let i = 0; i < numHearts; i++) {
+    const delay = Math.random() * 8;
+    const left = 5 + Math.random() * 90; // from 5vw to 95vw
+    const duration = 6 + Math.random() * 6; // 6 to 12 seconds
+    createHeart(delay, left, duration);
+  }
+
+  // Confetti pieces creation and animation
+  const confettiContainer = document.getElementById('confetti-container');
+  const confettiColors = ['#ffdf6f', '#ffb347', '#ffe87c', '#ffae42', '#ffc433'];
+  const confettiCount = 40;
+
+  function createConfettiPiece() {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.width = 6 + Math.random() * 12 + "px";
+    piece.style.height = 8 + Math.random() * 16 + "px";
+    piece.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    piece.style.animationDuration = 4 + Math.random() * 6 + "s";
+    piece.style.animationDelay = Math.random() * 10 + "s";
+    confettiContainer.appendChild(piece);
+
+    // Remove after animation so DOM is not cluttered
+    piece.addEventListener('animationend', () => {
+      piece.remove();
+      createConfettiPiece();
+    });
+  }
+  for (let i = 0; i < confettiCount; i++) {
+    createConfettiPiece();
+  }
+
+  // Audio play/pause control with icon toggle
+  const audio = document.getElementById('fathersDaySong');
+  const audioControlBtn = document.getElementById('audioControl');
+  const audioIcon = document.getElementById('audioIcon');
+
+  audioControlBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(() => {
+        alert("Audio playback requires user interaction on this device.");
+      });
+      audioIcon.textContent = 'pause';
+      audioControlBtn.setAttribute('aria-pressed', 'true');
+    } else {
+      audio.pause();
+      audioIcon.textContent = 'play_arrow';
+      audioControlBtn.setAttribute('aria-pressed', 'false');
+    }
+  });
+
+  // On page load, attempt to play audio muted first for autoplay compatibility (if needed)
+  window.addEventListener('load', () => {
+    audio.volume = 0.3;
+    // Some browsers block autoplay, so we only try muted autoplay and fallback to user control
+    audio.muted = true;
+    audio.play().then(() => {
+      audio.pause();
+      audio.muted = false;
+    }).catch(() => {
+      // Autoplay failed, user must click play button
+    });
+  });
+</script>
+
+</body>
+</html>
+
+```
+
+🎨 **Generating images based on descriptions...**
+
+✅ **Images generated successfully! Here's your updated content:**
+
+`fathers-day-celebration.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Father's Day Celebration from Archit</title>
+<style>
+  /* Reset and basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: black;
+    color: #fff;
+  }
+
+  /* Background image with overlay */
+  body {
+    position: relative;
+    background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f4c1cd76-5535-4c33-944e-5c3068107ce1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 0;
+  }
+
+  /* Container */
+  #container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Main message styling - large with glow for "Happy Father's Day" text */
+  h1 {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffdf6f;
+    text-shadow:
+      0 0 20px #ffdf6f,
+      0 0 40px #ffb347,
+      0 0 60px #ffb347,
+      0 0 80px #ffae42;
+    margin-bottom: 1rem;
+    animation: flickerGlow 3s infinite alternate ease-in-out;
+    user-select: none;
+  }
+
+  /* Message from Archit */
+  p.message {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #e2db98;
+    max-width: 720px;
+    margin-bottom: 3rem;
+    letter-spacing: 0.06em;
+    text-shadow: 0 0 6px #e2db98;
+    user-select: none;
+  }
+
+  /* Animated floating hearts */
+  .floating-heart {
+    position: fixed;
+    bottom: -50px;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, #ff6b6b, #cc4c4c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px #ff6b6b77;
+    animation-timing-function: ease-in-out;
+    animation-name: floatUp;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+  }
+  .floating-heart::before, .floating-heart::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at center, #ff6b6b, #cc4c4c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+  .floating-heart::before {
+    top: -14px;
+    left: 0;
+  }
+  .floating-heart::after {
+    left: 14px;
+    top: 0;
+  }
+
+  /* Animation for hearts floating upwards with sway */
+  @keyframes floatUp {
+    0% {
+      bottom: -50px;
+      opacity: 0;
+      transform: translateX(0) rotate(45deg) scale(0.8);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      bottom: 110vh;
+      opacity: 0;
+      transform: translateX(40px) rotate(45deg) scale(1.2);
+    }
+  }
+
+  /* Flickering glow effect for title */
+  @keyframes flickerGlow {
+    0%, 100% { text-shadow:
+      0 0 20px #ffdf6f,
+      0 0 40px #ffb347,
+      0 0 60px #ffb347,
+      0 0 80px #ffae42; color: #ffdf6f; }
+    50% { 
+      text-shadow:
+      0 0 30px #ffe87c,
+      0 0 60px #ffcc33,
+      0 0 90px #ffcc33,
+      0 0 120px #ffb12e; 
+      color: #fff9aa;
+     }
+  }
+
+  /* Responsive text scaling */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3.6rem;
+    }
+    p.message {
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+  }
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2.6rem;
+    }
+  }
+
+  /* Audio control styling */
+  #audioControl {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    color: #ffdf6f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+  #audioControl:hover {
+    background: rgba(0,0,0,0.9);
+  }
+
+  /* Material Icon style */
+  .material-icons {
+    font-size: 28px;
+    user-select: none;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+
+<div id="container" role="main" aria-label="Father's Day celebration site from Archit">
+  <h1>Happy Father's Day!</h1>
+  <p class="message">With love and gratitude from Archit.</p>
+</div>
+
+<!-- Floating hearts container -->
+<div id="hearts-container" aria-hidden="true"></div>
+
+<!-- Confetti container -->
+<div id="confetti-container" aria-hidden="true"></div>
+
+<!-- Audio and control -->
+<audio id="fathersDaySong" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f56d7a0ca.mp3?filename=celebration-1-6076.mp3"></audio>
+<button id="audioControl" aria-pressed="false" aria-label="Play or pause Father's Day music">
+  <span class="material-icons" id="audioIcon">play_arrow</span>
+</button>
+
+<script>
+  // Generate multiple floating hearts with random horizontal position and animation duration
+  const heartsContainer = document.getElementById('hearts-container');
+  const numHearts = 16;
+
+  function createHeart(delay, leftPercent, duration) {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.style.left = leftPercent + 'vw';
+    heart.style.animationDuration = duration + 's';
+    heart.style.animationDelay = delay + 's';
+    heartsContainer.appendChild(heart);
+  }
+  for (let i = 0; i < numHearts; i++) {
+    const delay = Math.random() * 8;
+    const left = 5 + Math.random() * 90; // from 5vw to 95vw
+    const duration = 6 + Math.random() * 6; // 6 to 12 seconds
+    createHeart(delay, left, duration);
+  }
+
+  // Confetti pieces creation and animation
+  const confettiContainer = document.getElementById('confetti-container');
+  const confettiColors = ['#ffdf6f', '#ffb347', '#ffe87c', '#ffae42', '#ffc433'];
+  const confettiCount = 40;
+
+  function createConfettiPiece() {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.width = 6 + Math.random() * 12 + "px";
+    piece.style.height = 8 + Math.random() * 16 + "px";
+    piece.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    piece.style.animationDuration = 4 + Math.random() * 6 + "s";
+    piece.style.animationDelay = Math.random() * 10 + "s";
+    confettiContainer.appendChild(piece);
+
+    // Remove after animation so DOM is not cluttered
+    piece.addEventListener('animationend', () => {
+      piece.remove();
+      createConfettiPiece();
+    });
+  }
+  for (let i = 0; i < confettiCount; i++) {
+    createConfettiPiece();
+  }
+
+  // Audio play/pause control with icon toggle
+  const audio = document.getElementById('fathersDaySong');
+  const audioControlBtn = document.getElementById('audioControl');
+  const audioIcon = document.getElementById('audioIcon');
+
+  audioControlBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(() => {
+        alert("Audio playback requires user interaction on this device.");
+      });
+      audioIcon.textContent = 'pause';
+      audioControlBtn.setAttribute('aria-pressed', 'true');
+    } else {
+      audio.pause();
+      audioIcon.textContent = 'play_arrow';
+      audioControlBtn.setAttribute('aria-pressed', 'false');
+    }
+  });
+
+  // On page load, attempt to play audio muted first for autoplay compatibility (if needed)
+  window.addEventListener('load', () => {
+    audio.volume = 0.3;
+    // Some browsers block autoplay, so we only try muted autoplay and fallback to user control
+    audio.muted = true;
+    audio.play().then(() => {
+      audio.pause();
+      audio.muted = false;
+    }).catch(() => {
+      // Autoplay failed, user must click play button
+    });
+  });
+</script>
+
+</body>
+</html>
+
+```
